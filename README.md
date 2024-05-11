@@ -13,7 +13,9 @@ Supported versions are:
 - FW 11.00
 - more can be added (PRs are welcome)
 
-The exploit only prints `PPPwned` on your PS4 as a proof-of-concept. In order to launch Mira or similar homebrew enablers, the `stage2.bin` payload needs to be adapted.
+The file `stage2.bin` loads the file `goldhen.bin` loaded on the root of an USB connected to the PS4
+
+Support only for the **11.00** version of PS4
 
 ## Requirements
 - A computer with an Ethernet port
@@ -43,14 +45,8 @@ Install the requirements:
 sudo pip install -r requirements.txt
 ```
 
-Compile the payloads:
+Move `USB/goldhen.bin` to the USB root
 
-```sh
-make -C stage1 FW=1100 clean && make -C stage1 FW=1100
-make -C stage2 FW=1100 clean && make -C stage2 FW=1100
-```
-
-For other firmwares, e.g. FW 9.00, pass `FW=900`.
 
 DO NOT RUN the exploit just yet (don't press Enter yet) but prepare this command on your prompt (see `ifconfig` for the correct interface):
 
@@ -62,6 +58,7 @@ For other firmwares, e.g. FW 9.00, pass `--fw=900`.
 
 On your PS4:
 
+- Connect the USB with `goldhen.bin` to the console
 - Go to `Settings` and then `Network`
 - Select `Set Up Internet connection` and choose `Use a LAN Cable`
 - Choose `Custom` setup and choose `PPPoE` for `IP Address Settings`
